@@ -11,12 +11,7 @@ const GlobalStyle = createGlobalStyle`
     color: white;
     font-family: 'Rubik';
     font-weight: 400;
-
     background: #0D121D;
-    background-image: url("/images/background.png");
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-position: center bottom;
   }
 
   button {
