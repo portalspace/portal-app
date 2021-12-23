@@ -79,8 +79,6 @@ export const Claims = () => {
     ]
   }, [claimsStatus])
 
-  console.log(claimsStatus);
-
   return (
     <>
       <SectionTitle>Claimable NFTs {isLoading && <Loader size='12px'/>}</SectionTitle>
