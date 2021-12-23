@@ -1,3 +1,6 @@
+/**
+ * @dev Image uses `sharp` under the hood for production deployments
+ */
 import React, { useCallback, useEffect, useState, useMemo } from 'react'
 import { useDispatch } from 'react-redux'
 import ReactImageFallback from 'react-image-fallback'
