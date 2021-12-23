@@ -6,6 +6,7 @@ import LazyLoad from 'react-lazyload'
 import { find } from 'lodash'
 
 import { useWeb3React } from '../../../../hooks/useWeb3'
+import { useWalletModalToggle  } from '../../../../state/application/hooks'
 import { useBalances } from '../../../../state/balances/hooks'
 import { useSelectedState } from '../../../../state/selected/hooks'
 import { useEntriesState } from '../../../../state/entries/hooks'
@@ -19,6 +20,7 @@ import { Image } from '../Image'
 import { Loader } from '../../../Icons'
 import { RowNoWrap, RowBlock } from '../../../Row'
 import { ColumnNoWrap } from '../../../Column'
+import { Web3Status } from '../../../Web3Status'
 
 const Container = styled(ColumnNoWrap)`
   height: 100%;
@@ -85,17 +87,19 @@ const Details = styled(ColumnNoWrap)`
 `
 
 export const Overview = ({ setPhaseView }) => {
-  const { chainId } = useWeb3React()
+  const { account, chainId } = useWeb3React()
   const dispatch = useDispatch()
   const { data: balances, status: balancesStatus } = useBalances()
   const selected = useSelectedState()
+  const toggleWalletModal = useWalletModalToggle()
 
-  const [isLoading, isError] = useMemo(() => {
+  const [isConnected, isLoading, isError] = useMemo(() => {
     return [
+      account && chainId,
       balancesStatus == 'LOADING',
       balancesStatus == 'ERROR',
     ]
-  }, [balancesStatus])
+  }, [account, chainId, balancesStatus])
 
   const selectedContract = useMemo(() => {
     return selected.collection.contract
@@ -112,9 +116,13 @@ export const Overview = ({ setPhaseView }) => {
 
   function renderCollections() {
     return (
-      isError ? (
+      !isConnected ? (
         <RowBlock>
-          TheGraph protocol is currently offline. Please check again later.
+          Please connect your wallet.
+        </RowBlock>
+      ) : isError ? (
+        <RowBlock>
+          The Graph hosted network which provides the data for our app is currently offline. Please check again later.
         </RowBlock>
       ) : (isLoading && !balances.length) ? (
         <RowBlock>
@@ -168,10 +176,16 @@ export const Overview = ({ setPhaseView }) => {
       <NetworkBar />
       {renderCollections()}
       <ProgressWrapper style={{marginTop: 'auto'}}>
-        <ProgressButton
-          highlight={!!selectedContract}
-          onClick={() => selectedContract && setPhaseView(PHASE_VIEWS.COLLECTION)}
-        >{selectedContract ? 'Continue' : 'Select a collection'}</ProgressButton>
+        {isConnected ? (
+          <ProgressButton
+            highlight={!!selectedContract}
+            onClick={() => selectedContract && setPhaseView(PHASE_VIEWS.COLLECTION)}
+          >{selectedContract ? 'Continue' : 'Select a collection'}</ProgressButton>
+        ) : (
+          <ProgressButton highlight={true} onClick={toggleWalletModal}>
+            Connect Wallet
+          </ProgressButton>
+        )}
       </ProgressWrapper>
     </Container>
   )

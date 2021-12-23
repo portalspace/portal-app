@@ -17,8 +17,6 @@ export const RowNoWrap = styled.div`
   justify-content: flex-start;
   text-align: center;
   align-items: center;
-  overflow: hidden;
-  white-space: nowrap;
 `
 
 export const RowBlock = styled(RowNoWrap)`

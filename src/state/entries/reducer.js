@@ -13,15 +13,22 @@ const initialState = {
   data_raw: [], // unfiltered/unmerged
 }
 
+const DEFAULT_RETURN = {
+  blockNumber: null,
+  data: [],
+}
+
 export const fetchEntries = createAsyncThunk(
   'entries/fetchEntries',
   async ({ account, currentChainId }) => {
-    // Catch this by `rejected`
-    if (!account || !currentChainId) throw new Error('No account or currentChainId present')
+    if (!account || !currentChainId) {
+      console.info('No account or currentChainId present')
+      return DEFAULT_RETURN
+    }
     try {
       const promises = SUPPORTED_CHAIN_IDS.map(async chainId => {
         const client = getApolloClient(chainId)
-        if (!client) return []
+        if (!client) return DEFAULT_RETURN
 
         const { data } = await client.query({
           query: ENTRIES,
@@ -41,10 +48,7 @@ export const fetchEntries = createAsyncThunk(
     } catch (err) {
       console.log('Unable to fetch entries from Apollo')
       console.error(err)
-      return {
-        blockNumber: null,
-        data: []
-      }
+      return DEFAULT_RETURN
     }
   }
 )

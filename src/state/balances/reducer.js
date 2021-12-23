@@ -12,15 +12,21 @@ const initialState = {
   data: {},
 }
 
+const DEFAULT_RETURN = {
+  blockNumber: null,
+  data: []
+}
+
 export const fetchBalances = createAsyncThunk(
   'balances/fetchBalances',
   async ({ account, chainId }) => {
-    // Catch this by `rejected`
-    if (!account || !chainId) throw new Error('No account or chainId present')
+    if (!account || !chainId) {
+      console.info('No account or chainId present')
+      return DEFAULT_RETURN
+    }
     try {
       const client = getApolloClient(chainId)
-      if (!client) return []
-
+      if (!client) return DEFAULT_RETURN
       const { data } = await client.query({
         query: BALANCES,
         variables: { account: account.toLowerCase() }, // non-lowercase'd queries do NOT work
@@ -34,10 +40,7 @@ export const fetchBalances = createAsyncThunk(
     } catch (error) {
       console.log('Unable to fetch balances from Apollo')
       console.error(err)
-      return {
-        blockNumber: null,
-        data: []
-      }
+      return DEFAULT_RETURN
     }
   }
 )
