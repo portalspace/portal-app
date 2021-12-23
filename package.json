@@ -1,0 +1,85 @@
+{
+  "name": "portal-app",
+  "description": "Permissionless cross-chain bridging of ERC20s and NFTs",
+  "version": "1.0.0",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "@apollo/client": "^3.5.5",
+    "@ethersproject/abi": "^5.5.0",
+    "@ethersproject/address": "^5.4.0",
+    "@ethersproject/bignumber": "^5.4.1",
+    "@ethersproject/constants": "^5.4.0",
+    "@ethersproject/contracts": "^5.4.1",
+    "@ethersproject/providers": "^5.4.3",
+    "@ethersproject/units": "^5.4.0",
+    "@gnosis.pm/safe-apps-web3-react": "^0.6.7",
+    "@react-spring/web": "^9.3.0",
+    "@reduxjs/toolkit": "^1.6.2",
+    "@types/node": "^16.11.12",
+    "@types/react": "^17.0.37",
+    "@web3-react/abstract-connector": "^6.0.7",
+    "@web3-react/core": "^6.1.9",
+    "@web3-react/fortmatic-connector": "^6.1.6",
+    "@web3-react/injected-connector": "^6.0.7",
+    "@web3-react/network-connector": "^6.1.9",
+    "@web3-react/portis-connector": "^6.1.9",
+    "@web3-react/types": "^6.0.7",
+    "@web3-react/walletconnect-connector": "^6.2.8",
+    "@web3-react/walletlink-connector": "^6.2.8",
+    "apollo-cache-inmemory": "^1.6.6",
+    "apollo-link-http": "^1.5.17",
+    "bottleneck": "^2.19.5",
+    "copy-to-clipboard": "^3.3.1",
+    "ethereum-multicall": "^2.9.0",
+    "graphql": "^16.0.1",
+    "graphql-tag": "^2.12.6",
+    "heroku-ssl-redirect": "^0.1.1",
+    "lodash": "^4.17.21",
+    "muon": "git+https://github.com/muon-protocol/muon-client-js.git",
+    "next": "^12.0.3",
+    "numbro": "^2.3.5",
+    "react": "^17.0.2",
+    "react-device-detect": "^2.1.2",
+    "react-dom": "^17.0.2",
+    "react-feather": "^2.0.9",
+    "react-image-fallback": "^8.0.0",
+    "react-lazyload": "^3.2.0",
+    "react-redux": "^7.2.6",
+    "react-spring": "^9.3.0",
+    "react-toastify": "^7.0.4",
+    "react-window": "^1.8.6",
+    "redux": "^4.1.1",
+    "styled-components": "^5.3.0",
+    "styled-react-modal": "^2.1.0",
+    "tiny-invariant": "^1.1.0",
+    "typescript": "^4.5.2",
+    "web3": "^1.5.0"
+  },
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build && next export",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "engines": {
+    "node": "^14.16.0",
+    "npm": "8.1.1"
+  },
+  "devDependencies": {
+    "eslint": "^8.3.0",
+    "eslint-config-next": "^12.0.4"
+  }
+}

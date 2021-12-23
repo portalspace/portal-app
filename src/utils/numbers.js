@@ -1,0 +1,21 @@
+import numbro from 'numbro'
+
+export const formatDollarAmount = (number = undefined, digits = 2, round = true) => {
+  if (number === 0) return '$0.00'
+  if (!number) return '-'
+  if (number < 0.001) {
+    return '<$0.001'
+  }
+  return numbro(number).formatCurrency({ average: round, mantissa: digits })
+}
+
+export const formatAmount = (number = undefined, digits = 2) => {
+  number = Number(number)
+  if (number === 0) return '0'
+  if (!number) return '-'
+  if (number < 0.01) {
+    return '<0.01'
+  }
+  const nf = new Intl.NumberFormat('en-US')
+  return nf.format(parseFloat(number.toFixed(number > 1000 ? 0 : digits)))
+}

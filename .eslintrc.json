@@ -1,0 +1,11 @@
+{
+  "extends": "next",
+  "rules": {
+    "react/prop-types": "off",
+    "quotes": ["error", "single"],
+    "semi": ["error", "never"],
+    "indent": ["error", 2, { "SwitchCase": 1 }],
+    "@next/next/no-img-element": "off",
+    "@next/next/no-document-import-in-page": "off"
+  }
+}
