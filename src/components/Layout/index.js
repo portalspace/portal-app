@@ -1,6 +1,5 @@
 import React, { useMemo } from 'react'
 import styled from 'styled-components'
-import { useRouter } from 'next/router'
 
 import { NavBar } from './NavBar'
 import { Portal } from '../Portal'
@@ -28,19 +27,14 @@ const PortalWrapper = styled.div`
   width: 100%;
   position: absolute;
   bottom: 0;
-  height: ${props => props.isHomePage ? '530px' : '670px'}; /* 700px minus viewbox according to figma */
+  height: 530px /* 700px minus viewbox according to figma */
 `
 
 export const Layout = ({ children }) => {
-  const { pathname } = useRouter()
-  const isHomePage = useMemo(() => {
-    return pathname === '/'
-  }, [pathname])
-
   return (
     <Wrapper>
       <NavBar/>
-      <PortalWrapper isHomePage={isHomePage}>
+      <PortalWrapper>
         <Portal />
       </PortalWrapper>
       <Content>

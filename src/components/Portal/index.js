@@ -36,19 +36,19 @@ const Glare = styled(Circle)`
 const MobileCircle = () => {
   return (
     <svg width="700" height="530" viewBox="0 0 700 530" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <g filter="url(#filter0_i_72_445)">
+      <g filter="url(#filter0_i_552_5)">
         <circle cx="350" cy="350" r="350" fill="#0D121D"/>
       </g>
       <defs>
-        <filter id="filter0_i_72_445" x="0" y="0" width="700" height="710" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+        <filter id="filter0_i_552_5" x="0" y="0" width="700" height="710" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
         <feFlood flood-opacity="0" result="BackgroundImageFix"/>
         <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
         <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
         <feOffset dy="10"/>
         <feGaussianBlur stdDeviation="5"/>
         <feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1"/>
-        <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0.28 0 0 0 0 1 0 0 0 0.2 0"/>
-        <feBlend mode="normal" in2="shape" result="effect1_innerShadow_72_445"/>
+        <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0.28 0 0 0 0 1 0 0 0 1 0"/>
+        <feBlend mode="normal" in2="shape" result="effect1_innerShadow_552_5"/>
         </filter>
       </defs>
     </svg>
