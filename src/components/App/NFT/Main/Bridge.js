@@ -189,8 +189,8 @@ export const Bridge = ({ setPhaseView }) => {
     }
     if (showApprove) {
       return (
-        <ProgressButton highlight={true} onClick={() => approveCallback()}>
-          Approve
+        <ProgressButton highlight={true} onClick={() => approveCallback()} style={{fontSize: '1em'}}>
+          Allow Portal to spend your NFT
         </ProgressButton>
       )
     }
