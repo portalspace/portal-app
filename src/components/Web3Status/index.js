@@ -32,7 +32,6 @@ const ErrorButton = styled(NavButton)`
 `
 
 const Text = styled.p`
-  width: fit-content;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;

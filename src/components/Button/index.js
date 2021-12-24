@@ -12,8 +12,8 @@ export const NavButton = styled.button`
   text-align: center;
   padding: 0 10px;
   border-radius: 10px;
-  box-sizing: border-box;
   background: #121826;
+  border: 1px solid transparent;
 
   &:hover,
   &:focus {
