@@ -94,13 +94,13 @@ export const Bridge = ({ setPhaseView }) => {
   }, [tokenId])
 
   const [showGenerate, showGeneratePending, showGenerateDisclaimer] = useMemo(() => {
-    const show = (!tokenId || tokenId == 0) && !tokenIdLoading
+    const show = (!tokenId || tokenId == 0) && !tokenIdLoading && !factoryIsDeployed
     return [
       show,
       show && generateState === GenerateState.PENDING, // tx pending
       show && targetChainId,
     ]
-  }, [tokenId, generateState, targetChainId])
+  }, [tokenId, generateState, targetChainId, factoryIsDeployed])
 
   const [showDeploy, showDeployLoader, showDeployDisclaimer] = useMemo(() => {
     const show = !factoryIsDeployed
