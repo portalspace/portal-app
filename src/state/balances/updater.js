@@ -10,7 +10,10 @@ export default function Updater() {
 
   // No sanity check: this will reset state if (!account || !chainId)
   useEffect(() => {
-    dispatch(fetchBalances({ account, chainId }))
+    const update = () => dispatch(fetchBalances({ account, chainId }))
+    update()
+    const self = setInterval(() => update(), 60 * 1000)
+    return () => clearInterval(self)
   }, [dispatch, account, chainId])
   return null
 }
