@@ -113,15 +113,16 @@ export const Collection = ({ setPhaseView }) => {
             {collection.owned.map((nftId, index) => {
               const id = parseInt(nftId)
               return (
-                <LazyLoad
-                  height={37.5} // (row + padding) / nColumns
-                  key={index}
-                  once
-                  overflow
-                >
+                // <LazyLoad
+                //   height={37.5} // (row + padding) / nColumns
+                //   key={index}
+                //   once
+                //   overflow
+                // >
                   <Cell
                     active={selectedNftId === id}
                     onClick={() => onSelect(id)}
+                    key={index}
                   >
                     <Image
                       contractAddress={collection.contractAddress}
@@ -135,7 +136,7 @@ export const Collection = ({ setPhaseView }) => {
                       <div>#{id}</div>
                     </TokenId>
                   </Cell>
-                </LazyLoad>
+                // </LazyLoad>
               )
             })}
           </Grid>

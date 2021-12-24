@@ -139,15 +139,16 @@ export const Overview = ({ setPhaseView }) => {
             const { contractAddress, isMuon, name, symbol, owned } = collection
             const amount = owned.length
             return (
-              <LazyLoad
-                height={75} // row + padding
-                key={index}
-                once
-                overflow
-              >
+              // <LazyLoad
+              //   height={75} // row + padding
+              //   key={index}
+              //   once
+              //   overflow
+              // >
                 <Row
                   active={selectedContract === contractAddress}
                   onClick={() => onSelect(contractAddress, name, symbol, isMuon)}
+                  key={index}
                 >
                   <ImageWrapper>
                     <Image
@@ -164,7 +165,7 @@ export const Overview = ({ setPhaseView }) => {
                     <div>{amount} {amount === 1 ? 'Item' : 'Items'}</div>
                   </Details>
                 </Row>
-              </LazyLoad>
+              // </LazyLoad>
             )
           })}
         </RowWrapper>
