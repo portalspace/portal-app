@@ -20,7 +20,7 @@ import { PendingView } from './PendingView'
 import { Modal, ModalHeader } from '../Modal'
 import { AccountDetails } from '../AccountDetails'
 import { Close as CloseIcon } from '../Icons'
-import MetamaskIcon from '../../assets/images/metamask.png'
+import MetamaskIcon from '../../assets/images/wallet/metamask.png'
 
 const Wrapper = styled.div`
   display: flex;
