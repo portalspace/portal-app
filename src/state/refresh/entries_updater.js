@@ -8,7 +8,6 @@ import { useWeb3React } from '../../hooks/useWeb3'
 import { isTransactionRecent, useAllTransactions } from '../transactions/hooks'
 import { useEntriesState } from '../entries/hooks'
 import { fetchEntries } from '../entries/reducer'
-import { fetchTokens } from '../tokens/reducer'
 import { useBlockNumber } from '../application/hooks'
 
 // We want the latest one to come first, so return negative if a is after b
@@ -61,7 +60,7 @@ export default function Updater() {
     if (!blockOnLastFetch || !targetBlockNumber || !account || !chainId) return
 
     if (blockOnLastFetch >= targetBlockNumber) {
-      console.log('App is fully in sync')
+      // console.log('Entries are fully up-to-date')
       return
     }
 
@@ -69,13 +68,12 @@ export default function Updater() {
       try {
         const syncedBlockNumber = await fetchSyncedBlock()
         if (syncedBlockNumber < targetBlockNumber) {
-          console.log('Subgraph is not in-sync yet')
+          console.log('[Bridge] subgraph is not in-sync yet')
           return
         }
 
-        console.log('Subgraph is in sync, updating balances...');
+        console.log('[Bridge] subgraph is in sync, updating entriees...');
         dispatch(fetchEntries({ account, currentChainId: chainId }))
-        dispatch(fetchTokens())
       } catch (err) {
         console.error(err)
       }
