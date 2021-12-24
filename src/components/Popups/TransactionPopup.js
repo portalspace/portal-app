@@ -43,6 +43,10 @@ const InfoWrapper = styled.div`
   margin-bottom: 25px;
 
   & > * {
+    &:first-child {
+      margin-right: 20px;
+    }
+
     &:nth-child(2) {
       display: flex;
       flex-flow: column nowrap;
@@ -51,10 +55,12 @@ const InfoWrapper = styled.div`
           font-size: 12.5px;
         }
         &:nth-child(2) {
+          margin-top: 10px;
           font-size: 20px;
         }
         &:nth-child(3) {
           font-size: 15px;
+          margin-top: 3px;
           color: #6F7077;
         }
       }
@@ -186,11 +192,10 @@ export default function TransactionPopup({ content, removeThisPopup }) {
             isMuon={isMuon}
             nftId={nftId}
             alt={`${nftId} image`}
-            height={'90px'}
-            style={{justifyContent: 'flex-start'}}
+            size={'90px'}
           />
           <div>
-            <div>{BEAUTIFIED_CHAINS_BY_CHAIN_ID[fromChain]} to {BEAUTIFIED_CHAINS_BY_CHAIN_ID[toChain]}</div>
+            <div>{BEAUTIFIED_CHAINS_BY_CHAIN_ID[fromChain]} 🠒 {BEAUTIFIED_CHAINS_BY_CHAIN_ID[toChain]}</div>
             <div>{symbol} #{nftId}</div>
             <div>{name}</div>
           </div>
