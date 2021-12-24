@@ -29,12 +29,14 @@ const Container = styled(ColumnNoWrap)`
 const RowWrapper = styled.div`
   flex: 1;
   margin-top: 30px;
-  overflow: scroll;
+  position: relative;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
 `
 
 const Row = styled(RowNoWrap)`
   justify-content: space-between;
-  padding: 7.5px 0;
+  padding: 7.5px 20px;
 
   &:hover {
     cursor: pointer;
@@ -73,7 +75,6 @@ const Label = styled.div`
 const Details = styled(ColumnNoWrap)`
   justify-content: center;
   align-items: flex-end;
-  margin-right: 30px;
 
   & > * {
     &:first-child {
@@ -140,8 +141,9 @@ export const Overview = ({ setPhaseView }) => {
             return (
               <LazyLoad
                 height={75} // row + padding
-                overflow={true}
                 key={index}
+                once
+                overflow
               >
                 <Row
                   active={selectedContract === contractAddress}
@@ -153,8 +155,7 @@ export const Overview = ({ setPhaseView }) => {
                       isMuon={isMuon}
                       nftId={parseInt(owned[0])}
                       alt={`${name} collection`}
-                      height={'60px'}
-                      width={'120px'} // center with 30 padding
+                      size={'60px'}
                     />
                     {isMuon && <Label>Muon Asset</Label>}
                   </ImageWrapper>

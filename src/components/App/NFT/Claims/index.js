@@ -26,13 +26,17 @@ const Container = styled(Card)`
 const Wrapper = styled.div`
   display: flex;
   flex-flow: column nowrap;
-  padding: 20px 0;
+  padding: 20px;
   gap: 13px;
 `
 
 const Row = styled(AutoRow)`
   justify-content: flex-end;
-  padding-right: 20px;
+  & > * {
+    &:first-child {
+      margin-right: 10px;
+    }
+  }
 `
 
 const Name = styled.div`
@@ -100,8 +104,7 @@ export const Claims = () => {
                       isMuon={isMuon}
                       nftId={nftId}
                       alt={`${nftId} image`}
-                      height={'30px'}
-                      width={'70px'}
+                      size={'30px'}
                     />
                     <Name>#{nftId} {name}</Name>
                     <SourceWrapper>

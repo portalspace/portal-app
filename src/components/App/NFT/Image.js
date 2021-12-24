@@ -1,6 +1,5 @@
 import React, { useCallback, useEffect, useState, useMemo } from 'react'
 import { useDispatch } from 'react-redux'
-import ReactImageFallback from 'react-image-fallback'
 import { FixedSizeList as List } from 'react-window'
 import styled from 'styled-components'
 
@@ -10,25 +9,21 @@ import { UrlQueueMapping } from '../../../utils/queue'
 import { addBlob, enqueue } from '../../../state/images/actions'
 import { useTokenURI, useBlobs } from '../../../state/images/hooks'
 import { useOriginalContract } from '../../../hooks/useOriginalContract'
+import { ImageWithFallback } from '../../ImageWithFallback'
 
 const Wrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  height: ${props => props.height ? props.height : '60px'};
-  width: ${props => props.width ? props.width : '120px'};
   overflow: hidden;
+  & > * {
+    border-radius: 5px;
+  }
 `
 
-const StyledImage = styled(ReactImageFallback)`
-  max-width: 100%;
-  max-height: 100%;
-  border-radius: 5px;
-`
-
-export const Image = ({ contractAddress, nftId, alt, height, width, ...rest }) => {
+export const Image = ({ contractAddress, nftId, alt, size = '60px', ...rest }) => {
   const dispatch = useDispatch()
-  const [urlLoaded, setUrlLoaded] = useState(true)
+  const [loading, setLoading] = useState(true)
   const [blob, setBlob] = useState(null)
   const [mounted, setMounted] = useState(true)
   const { contractAddress: originalContractAddress, mainChain } = useOriginalContract(contractAddress)
@@ -114,7 +109,7 @@ export const Image = ({ contractAddress, nftId, alt, height, width, ...rest }) =
 
   useEffect(() => {
     const fetcher = async () => {
-      setUrlLoaded(false)
+      setLoading(true)
       const result = await getImageBlob()
 
       // Add image to cache
@@ -127,7 +122,7 @@ export const Image = ({ contractAddress, nftId, alt, height, width, ...rest }) =
 
       if (mounted) {
         setBlob(result)
-        setUrlLoaded(true)
+        setLoading(false)
       }
 
     }
@@ -135,20 +130,14 @@ export const Image = ({ contractAddress, nftId, alt, height, width, ...rest }) =
   }, [uri])
 
   return (
-    <Wrapper height={height} width={width} {...rest}>
-      {urlLoaded ? (
-        <StyledImage
-          fallbackImage={'/images/fallback/collection_404.png'}
-          initialImage={'/images/fallback/collection_loader.gif'}
-          src={blob}
-          alt={alt}
-        />
-      ) : (
-        <StyledImage
-          fallbackImage={'/images/fallback/collection_loader.gif'}
-          src={'/images/fallback/collection_loader.gif'}
-        />
-      )}
+    <Wrapper {...rest}>
+      <ImageWithFallback
+        src={blob}
+        alt={alt}
+        width={size}
+        height={size}
+        loading={loading}
+      />
     </Wrapper>
   )
 }

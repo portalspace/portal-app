@@ -24,17 +24,20 @@ const Container = styled(ColumnNoWrap)`
 const GridWrapper = styled.div`
   flex: 1;
   margin-top: 30px;
-  overflow: scroll;
 `
 
 const Grid = styled.div`
   display: grid;
+  position: relative;
   grid-template-columns: 1fr 1fr;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
 `
 
 const Cell = styled(RowNoWrap)`
   justify-content: space-between;
-  padding: 7.5px 0;
+  padding: 7.5px 20px;
+
   &:hover {
     cursor: pointer;
   }
@@ -56,7 +59,6 @@ const TokenId = styled.div`
   display: flex;
   flex-flow: row wrap;
   font-size: 17.5px;
-  margin-right: 30px;
   overflow: hidden;
   white-space: nowrap;
   & > * {
@@ -112,9 +114,10 @@ export const Collection = ({ setPhaseView }) => {
               const id = parseInt(nftId)
               return (
                 <LazyLoad
-                  height={75} // row + padding
-                  overflow={true}
+                  height={37.5} // (row + padding) / nColumns
                   key={index}
+                  once
+                  overflow
                 >
                   <Cell
                     active={selectedNftId === id}
@@ -125,8 +128,7 @@ export const Collection = ({ setPhaseView }) => {
                       isMuon={collection.isMuon}
                       nftId={id}
                       alt={`${id} image`}
-                      height={'60px'}
-                      width={'120px'} // center with 30 padding
+                      size={'60px'}
                     />
                     <TokenId>
                       <div>{collection.symbol}&nbsp;</div>
