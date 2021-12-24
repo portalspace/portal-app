@@ -196,7 +196,11 @@ export const Deploy = ({ setPhaseView }) => {
         </Disclaimer>
       )
     }
-    return null
+    return (
+      <Disclaimer>
+        Bridge Factory is successfully deployed. Let's. Freaking. Bridge. 
+      </Disclaimer>
+    )
   }
 
   return (
