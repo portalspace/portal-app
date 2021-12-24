@@ -64,7 +64,7 @@ export const Deposits = () => {
 
   return (
     <>
-      <SectionTitle>Your Deposits {isLoading && <Loader size='12px'/>}</SectionTitle>
+      <SectionTitle>Your Deposits {isLoading && <Loader size='12px' style={{marginLeft: '5px'}}/>}</SectionTitle>
       <Container>
         {(isLoading && !deposits.length) ? (
           <EmptyWrapper>

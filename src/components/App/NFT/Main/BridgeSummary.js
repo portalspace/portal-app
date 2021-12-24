@@ -6,6 +6,7 @@ import { useSelectedState } from '../../../../state/selected/hooks'
 
 import { Image } from '../Image'
 import { Copy as CopyIcon } from '../../../Icons'
+import { Copy } from '../../../Copy'
 
 const Wrapper = styled.div`
   display: flex;
@@ -75,8 +76,7 @@ export const BridgeSummary = () => {
         <div>{symbol}#{nftId}</div>
         <div>{name}</div>
         <div>
-          {truncateAddress(contract)}
-          <CopyIcon style={{transform: 'translateY(1px)', marginLeft: '10px'}}/>
+          <Copy toCopy={contract} text={truncateAddress(contract)} placement='right'/>
         </div>
       </DetailsWrapper>
     </Wrapper>

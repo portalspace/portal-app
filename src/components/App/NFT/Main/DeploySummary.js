@@ -7,7 +7,7 @@ import { useSelectedState } from '../../../../state/selected/hooks'
 import { BEAUTIFIED_CHAINS_BY_CHAIN_ID } from '../../../../constants/network'
 
 import { Image } from '../Image'
-import { Copy as CopyIcon } from '../../../Icons'
+import { Copy } from '../../../Copy'
 
 const Wrapper = styled.div`
   display: flex;
@@ -74,8 +74,7 @@ export const DeploySummary = ({ contract, chainId }) => {
         <div>{name} - {symbol}</div>
         <div>Original chain: {BEAUTIFIED_CHAINS_BY_CHAIN_ID[chainId]}</div>
         <div>
-          {truncateAddress(contract)}
-          <CopyIcon style={{transform: 'translateY(2px)', marginLeft: '10px'}}/>
+          <Copy toCopy={contract} text={truncateAddress(contract)} placement='right'/>
         </div>
       </DetailsWrapper>
       <Images>

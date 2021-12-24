@@ -85,7 +85,7 @@ export const Claims = () => {
 
   return (
     <>
-      <SectionTitle>Claimable NFTs {isLoading && <Loader size='12px'/>}</SectionTitle>
+      <SectionTitle>Claimable NFTs {isLoading && <Loader size='12px' style={{marginLeft: '5px'}}/>}</SectionTitle>
       <Container>
         {(isLoading && !claims.length) ? (
           <EmptyWrapper>

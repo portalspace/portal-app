@@ -45,7 +45,7 @@ export const Image = ({ contractAddress, nftId, alt, size = '60px', ...rest }) =
 
     // Check if its a raw ipfs link
     let ipfs = parseBase64(uri)
-    let image = ipfs.image
+    let image = ipfs?.image
 
     return image
       ? { protocol: 'ipfs', link: image }
@@ -124,7 +124,6 @@ export const Image = ({ contractAddress, nftId, alt, size = '60px', ...rest }) =
         setBlob(result)
         setLoading(false)
       }
-
     }
     fetcher()
   }, [uri])

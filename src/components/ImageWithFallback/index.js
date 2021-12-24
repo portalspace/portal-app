@@ -23,7 +23,7 @@ export const ImageWithFallback = ({ src, alt, width, height, loading = false, ..
     />
   ) : (
     <Image
-      src={src || LoaderGif}
+      src={src || NotFound}
       unoptimized={true} // nextjs doesn't support blobs hence this arg
       {...getProps()}
     />

@@ -17,17 +17,19 @@ const Wrapper = styled.div`
   }
 `
 
-export const Copy = ({ toCopy, text }) => {
+export const Copy = ({ toCopy, text, placement = 'left' }) => {
   const [isCopied, setCopied] = useCopyClipboard()
   return isCopied ? (
     <Wrapper>
+      {placement == 'right' && 'Copied'}
       <CheckMark size={'12px'}/>
-      Copied
+      {placement == 'left' && 'Copied'}
     </Wrapper>
   ) : (
     <Wrapper onClick={() => setCopied(toCopy)} >
-      <CopyIcon size={'12px'}/>
-      {text}
+      {placement == 'right' && text}
+      <CopyIcon size={'12px'} style={{transform: 'translateY(-1px)'}}/>
+      {placement == 'left' && text}
     </Wrapper>
   )
 }

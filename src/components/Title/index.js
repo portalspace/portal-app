@@ -13,9 +13,10 @@ export const Title = styled.div`
 `
 
 export const SectionTitle = styled.div`
-display: flex;
-flex-flow: row nowrap;
-justify-content: flex-start;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: flex-start;
+  align-items: center;
   width: 100%;
   margin-top: 40px;
   font-size: 20px;
