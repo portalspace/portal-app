@@ -30,7 +30,7 @@ export function useApproveCallback(tokenAddress) {
     if (!tokenAddress) return ApprovalState.UNKNOWN
     if (!spender) return ApprovalState.UNKNOWN
 
-    return currentAllowance
+    return currentAllowance.gt(0)
       ? ApprovalState.APPROVED
       : pendingApproval
         ? ApprovalState.PENDING
